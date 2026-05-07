@@ -1,0 +1,92 @@
+{
+  "common": {
+    "next": "Suivant",
+    "previous": "Précédent",
+    "finish": "Terminer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "refresh": "Actualiser",
+    "guest": "Invité",
+    "login_signup": "Connexion ou Inscription",
+    "maybe_later": "Plus tard",
+    "ok": "OK",
+    "cancel": "Annuler"
+  },
+  "difficulty": {
+    "select": "Sélectionner la difficulté",
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile",
+    "start": "Commencer le Quiz",
+    "mastered": "Niveau maîtrisé !",
+    "locked": "Verrouillé",
+    "complete_prev": "Terminez le niveau précédent pour déverrouiller",
+    "signup_unlock": "Inscrivez-vous pour déverrouiller ce niveau",
+    "unavailable": "Bientôt disponible",
+    "how_to_unlock": "Comment déverrouiller",
+    "unlock_desc": "Obtenez 70 % ou plus pour maîtriser un niveau et déverrouiller le suivant.",
+    "guest_limit": "Les invités ne peuvent jouer qu'en Facile. Inscrivez-vous pour déverrouiller Moyen et Difficile !"
+  },
+  "home": {
+    "hello": "Bonjour, {{name}} !",
+    "welcome_guest": "Bienvenue, Invité !",
+    "choose_quiz": "Choisissez un Quiz",
+    "no_quizzes": "Aucun quiz trouvé",
+    "check_back": "Revenez plus tard pour de nouveaux défis",
+    "test_knowledge": "Testez vos connaissances en {{category}}",
+    "signup_to_play": "Inscrivez-vous pour jouer"
+  },
+  "auth": {
+    "title_login": "Bon retour !",
+    "title_signup": "Créer un compte",
+    "subtitle_login": "Connectez-vous pour continuer votre progression",
+    "subtitle_signup": "Rejoignez-nous pour commencer votre voyage",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "password": "Mot de passe",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "no_account": "Pas encore de compte ? S'inscrire",
+    "have_account": "Déjà un compte ? Connexion",
+    "guest_mode": "Continuer en tant qu'invité",
+    "login_success": "Connexion réussie !",
+    "signup_success": "Compte créé !",
+    "fill_fields": "Veuillez remplir tous les champs"
+  },
+  "profile": {
+    "title": "Profil",
+    "logout": "Déconnexion",
+    "stats": "Statistiques",
+    "accuracy": "Précision",
+    "total_games": "Jeux joués",
+    "questions_attempted": "Questions tentées",
+    "level": "Niveau",
+    "coins": "Pièces",
+    "language": "Langue"
+  },
+  "quiz": {
+    "question_count": "Question {{current}} sur {{total}}",
+    "out_of_hearts": "Plus de cœurs !",
+    "level_locked": "Niveau verrouillé",
+    "back_to_home": "Retour à l'accueil",
+    "congrats": "Félicitations !",
+    "quiz_finished": "Quiz terminé",
+    "score": "Score",
+    "correct_answers": "Réponses correctes",
+    "time_spent": "Temps passé",
+    "next_question": "Suivant",
+    "finish_quiz": "Terminer",
+    "perfect_score": "Score parfait !",
+    "fetch_error": "Échec de la récupération des questions. Veuillez réessayer.",
+    "not_enough_coins": "Pas assez de pièces !",
+    "hearts": "Cœurs",
+    "coins": "Pièces",
+    "submit": "Soumettre",
+    "options": {
+      "0": "A",
+      "1": "B",
+      "2": "C",
+      "3": "D"
+    }
+  }
+}
