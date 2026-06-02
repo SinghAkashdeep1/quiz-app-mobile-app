@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity, 
-  ActivityIndicator, 
-  Dimensions, 
-  Image, 
-  Platform, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
+  Dimensions,
+  Image,
+  Platform,
   ScrollView,
   Animated,
   Easing
@@ -21,6 +21,7 @@ import { X, CheckCircle2, AlertCircle, ArrowRight, Clock, Lock, Coins, Heart, Tr
 import { useTheme } from '../theme/ThemeContext';
 import client, { BASE_IMAGE_URL } from '../api/client';
 import PuzzleModal from '../components/PuzzleModal';
+import GuidanceOverlay from '../components/GuidanceOverlay';
 
 const { width, height } = Dimensions.get('window');
 
@@ -61,10 +62,10 @@ const CelebrationParticle = ({ delay, color, type }: { delay: number, color: str
   });
 
   return (
-    <Animated.View 
+    <Animated.View
       style={[
-        { position: 'absolute', zIndex: 1 }, 
-        { 
+        { position: 'absolute', zIndex: 1 },
+        {
           opacity,
           transform: [
             { translateY },
@@ -112,23 +113,23 @@ const WinnerCelebration = () => {
   if (!visible) return null;
 
   return (
-    <Animated.View 
+    <Animated.View
       style={[
-        StyleSheet.absoluteFill, 
+        StyleSheet.absoluteFill,
         { zIndex: 0, opacity: fadeAnim, pointerEvents: 'none' }
       ]}
     >
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         {[...Array(25)].map((_, i) => (
-          <CelebrationParticle 
-            key={i} 
-            delay={i * 120} 
+          <CelebrationParticle
+            key={i}
+            delay={i * 120}
             type={celebrationType}
             color={
-              celebrationType === 'trophy' ? '#FFD60A' : 
-              celebrationType === 'heart' ? '#FF2D55' : 
-              ['#FFD60A', '#FF2D55', '#5856D6', '#34C759'][Math.floor(Math.random() * 4)]
-            } 
+              celebrationType === 'trophy' ? '#FFD60A' :
+                celebrationType === 'heart' ? '#FF2D55' :
+                  ['#FFD60A', '#FF2D55', '#5856D6', '#34C759'][Math.floor(Math.random() * 4)]
+            }
           />
         ))}
       </View>
@@ -156,6 +157,16 @@ const QuizScreen = () => {
   const { colors } = useTheme();
   const { user, refreshProfile } = useAuth();
   const { t, i18n } = useTranslation();
+  const quizSteps = [
+    {
+      title: 'onboarding.quiz_guide_title',
+      description: 'onboarding.quiz_guide_desc'
+    },
+    {
+      title: 'onboarding.lifeline_guide_title',
+      description: 'onboarding.lifeline_guide_desc'
+    }
+  ];
   const locale = i18n.language;
 
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -187,6 +198,7 @@ const QuizScreen = () => {
   const [eliminatedOptions, setEliminatedOptions] = useState<number[]>([]);
   const [hintMessage, setHintMessage] = useState<string | null>(null);
   const [isProcessingLifeline, setIsProcessingLifeline] = useState(false);
+  const [isOnboardingVisible, setIsOnboardingVisible] = useState(false);
 
   // New states for complex question types
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
@@ -199,7 +211,7 @@ const QuizScreen = () => {
   }, [categoryId, difficulty]);
 
   useEffect(() => {
-    if (loading || quizFinished || selectedOption !== null || error || questions.length === 0 || isTimerStopped || isProcessingLifeline) return;
+    if (loading || quizFinished || selectedOption !== null || error || questions.length === 0 || isTimerStopped || isProcessingLifeline || isOnboardingVisible) return;
 
     if (timeLeft <= 0) {
       handleOptionSelect(-1); // Time out
@@ -215,7 +227,7 @@ const QuizScreen = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, loading, quizFinished, selectedOption, startTime, isProcessingLifeline, isTimerStopped]);
+  }, [timeLeft, loading, quizFinished, selectedOption, startTime, isProcessingLifeline, isTimerStopped, isOnboardingVisible]);
 
   useEffect(() => {
     if (questions.length > 0 && questions[currentIndex]?.type === 'matching') {
@@ -335,10 +347,10 @@ const QuizScreen = () => {
       }
     }
 
-    const timeTaken = isTimerStopped && stoppedTime !== null 
-      ? (currentQuestion.timeLimit || 30) - stoppedTime 
+    const timeTaken = isTimerStopped && stoppedTime !== null
+      ? (currentQuestion.timeLimit || 30) - stoppedTime
       : (Date.now() - startTime) / 1000;
-    
+
     setTotalTimeSpent(prev => prev + (timeTaken * 1000));
     setResults(prev => [...prev, { questionId: currentQuestion._id, isCorrect: correct }]);
   };
@@ -391,10 +403,10 @@ const QuizScreen = () => {
     setIsCorrect(correct);
     if (correct) setScore(prev => prev + 1);
 
-    const timeTaken = isTimerStopped && stoppedTime !== null 
-      ? (currentQuestion.timeLimit || 30) - stoppedTime 
+    const timeTaken = isTimerStopped && stoppedTime !== null
+      ? (currentQuestion.timeLimit || 30) - stoppedTime
       : (Date.now() - startTime) / 1000;
-    
+
     setTotalTimeSpent(prev => prev + (timeTaken * 1000));
     setResults(prev => [...prev, { questionId: currentQuestion._id, isCorrect: correct }]);
   };
@@ -547,7 +559,7 @@ const QuizScreen = () => {
       newQuestions[currentIndex] = {
         ...res.data.alternative
       };
-      
+
       setQuestions(newQuestions);
       setUsedChangeQuestion(prev => prev + 1);
       setEliminatedOptions([]);
@@ -854,6 +866,11 @@ const QuizScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <GuidanceOverlay
+        featureKey="quiz_seen"
+        steps={quizSteps}
+        onVisibilityChange={setIsOnboardingVisible}
+      />
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.closeBtn}>
           <X color={colors.text} size={24} />
@@ -911,9 +928,9 @@ const QuizScreen = () => {
         </View>
 
         {user?.role !== 'guest' && (
-          <ScrollView 
-            horizontal 
-            showsHorizontalScrollIndicator={false} 
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
             style={styles.lifelinesWrapper}
             contentContainerStyle={styles.lifelinesContent}
           >

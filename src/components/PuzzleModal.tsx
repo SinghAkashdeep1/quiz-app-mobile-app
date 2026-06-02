@@ -26,7 +26,7 @@ const PuzzleModal: React.FC<PuzzleModalProps> = ({ visible, onClose, onSuccess, 
   const { colors } = useTheme();
   const { t } = useTranslation();
   const { user, refreshProfile } = useAuth();
-  
+
   const [puzzle, setPuzzle] = useState({ q: '', a: 0 });
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
@@ -49,10 +49,10 @@ const PuzzleModal: React.FC<PuzzleModalProps> = ({ visible, onClose, onSuccess, 
     const num2 = Math.floor(Math.random() * 20) + 1;
     const ops = ['+', '-'];
     const op = ops[Math.floor(Math.random() * ops.length)];
-    
+
     let q = `${num1} ${op} ${num2}`;
     let a = op === '+' ? num1 + num2 : num1 - num2;
-    
+
     setPuzzle({ q, a });
   };
 
@@ -70,7 +70,7 @@ const PuzzleModal: React.FC<PuzzleModalProps> = ({ visible, onClose, onSuccess, 
       } catch (err: any) {
         console.log('Refill attempted but failed:', err.message || 'Unknown error');
         const data = err.response?.data;
-        
+
         if (data && typeof data === 'object') {
           if (data.code === 'DAILY_LIMIT_REACHED') {
             setError(t('puzzle.daily_limit'));
@@ -134,11 +134,11 @@ const PuzzleModal: React.FC<PuzzleModalProps> = ({ visible, onClose, onSuccess, 
 
               <TextInput
                 style={[
-                  styles.input, 
-                  { 
-                    backgroundColor: colors.surface, 
-                    color: colors.text, 
-                    borderColor: error ? colors.error : colors.border 
+                  styles.input,
+                  {
+                    backgroundColor: colors.surface,
+                    color: colors.text,
+                    borderColor: error ? colors.error : colors.border
                   }
                 ]}
                 placeholder={t('puzzle.placeholder') || 'Answer'}

@@ -109,7 +109,30 @@
     "continue_guest": "अतिथि के रूप में जारी रखें",
     "fill_fields": "कृपया सभी फ़ील्ड भरें",
     "login_success": "वापसी पर स्वागत है!",
-    "signup_success": "खाता बन गया!"
+    "signup_success": "खाता बन गया!",
+    "forgot_password_link": "पासवर्ड भूल गए?",
+    "forgot_password_title": "पासवर्ड भूल गए",
+    "forgot_password_subtitle": "अपना ईमेल पता दर्ज करें और हम आपको पासवर्ड रीसेट करने के लिए एक कोड भेजेंगे।",
+    "verify_code_title": "कोड सत्यापित करें",
+    "verify_code_subtitle": "अपने ईमेल पर भेजा गया 6-अंकीय कोड दर्ज करें।",
+    "set_password_title": "नया पासवर्ड सेट करें",
+    "set_password_subtitle": "अपने खाते के लिए एक नया सुरक्षित पासवर्ड बनाएं।",
+    "email_placeholder": "ईमेल पता",
+    "code_placeholder": "6-अंकीय कोड",
+    "new_password_placeholder": "नया पासवर्ड",
+    "confirm_password_placeholder": "पासवर्ड की पुष्टि करें",
+    "send_code_btn": "कोड भेजें",
+    "reset_password_btn": "पासवर्ड रीसेट करें",
+    "next_btn": "अगला",
+    "resend_otp": "OTP पुनः भेजें",
+    "resend_in": "{{seconds}}s में पुनः भेजें",
+    "otp_expiry": "OTP 2 मिनट के लिए मान्य है",
+    "forgot_success_title": "ईमेल भेजा गया",
+    "forgot_success_msg": "आपके ईमेल पर 6-अंकीय सत्यापन कोड भेजा गया है।",
+    "resend_success_title": "OTP पुनः भेजा गया",
+    "resend_success_msg": "आपके ईमेल पर एक नया 6-अंकीय सत्यापन कोड भेजा गया है।",
+    "reset_success_title": "सफलता",
+    "reset_success_msg": "आपका पासवर्ड सफलतापूर्वक रीसेट कर दिया गया है।"
   },
   "puzzle": {
     "title_guest": "दिल चाहिए?",
@@ -124,5 +147,17 @@
     "daily_limit": "इस श्रेणी के लिए दैनिक रिफिल सीमा समाप्त हो गई है। कृपया कल पुनः प्रयास करें!",
     "cooldown": "इस श्रेणी के लिए दिल रिफिल करने के लिए कृपया {{hours}} और घंटे प्रतीक्षा करें।",
     "disabled": "रिफिल वर्तमान में अक्षम है।"
+  },
+  "onboarding": {
+    "welcome_guide_title": "QuizApp में आपका स्वागत है!",
+    "welcome_guide_desc": "अपने ज्ञान का परीक्षण करने और पुरस्कार जीतने के लिए तैयार हो जाइए। आइए हम आपको दिखाते हैं!",
+    "category_guide_title": "एक विषय चुनें",
+    "category_guide_desc": "अपनी क्विज़ यात्रा शुरू करने के लिए विज्ञान, इतिहास या खेल जैसी विभिन्न श्रेणियों में से चुनें।",
+    "quiz_guide_title": "क्विज़ स्क्रीन",
+    "quiz_guide_desc": "टाइमर खत्म होने से पहले सवालों के जवाब दें। अगर आप फंस जाएं तो लाइफलाइन का इस्तेमाल करें!",
+    "lifeline_guide_title": "लाइफलाइन का उपयोग करें",
+    "lifeline_guide_desc": "50/50, AI संकेत और टाइमर रोकें आपको गेम में बने रहने में मदद कर सकते हैं!",
+    "next": "अगला",
+    "finish": "समझ गया!"
   }
 }

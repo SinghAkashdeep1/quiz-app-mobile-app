@@ -36,6 +36,7 @@ import LanguagePickerModal from '../components/LanguagePickerModal';
 import CustomAlertModal from '../components/CustomAlertModal';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Alert } from 'react-native';
+import GuidanceOverlay from '../components/GuidanceOverlay';
 
 interface Category {
   _id: string;
@@ -44,6 +45,7 @@ interface Category {
   color: string;
   isGuestAllowed?: boolean;
   difficulty?: 'easy' | 'medium' | 'hard';
+  lifelines?: any;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -52,6 +54,17 @@ const PAGE_SIZE = 9;
 
 const HomeScreen = () => {
   const { t, i18n } = useTranslation();
+  
+  const homeSteps = [
+    {
+      title: 'onboarding.welcome_guide_title',
+      description: 'onboarding.welcome_guide_desc'
+    },
+    {
+      title: 'onboarding.category_guide_title',
+      description: 'onboarding.category_guide_desc'
+    }
+  ];
   const locale = i18n.language;
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -398,6 +411,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <GuidanceOverlay featureKey="home_seen" steps={homeSteps} />
       <StatusBar barStyle={isDark ? "light-content" : "dark-content"} />
       <ScrollView 
         style={styles.scrollContainer} 

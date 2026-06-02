@@ -1,11 +1,14 @@
+import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider, useTheme } from './src/theme/ThemeContext';
 import { AuthProvider } from './src/context/AuthContext';
 import { ToastProvider } from './src/context/ToastContext';
 import './src/i18n';
+
+import { GuidanceProvider } from './src/context/GuidanceContext';
 
 function AppContent() {
   const { isDark, colors } = useTheme();
@@ -36,7 +39,9 @@ export default function App() {
       <AuthProvider>
         <ThemeProvider>
           <ToastProvider>
-            <AppContent />
+            <GuidanceProvider>
+              <AppContent />
+            </GuidanceProvider>
           </ToastProvider>
         </ThemeProvider>
       </AuthProvider>

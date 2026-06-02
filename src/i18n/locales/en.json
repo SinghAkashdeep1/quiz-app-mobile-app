@@ -109,7 +109,30 @@
     "continue_guest": "Continue as Guest",
     "fill_fields": "Please fill in all fields",
     "login_success": "Welcome Back!",
-    "signup_success": "Account Created!"
+    "signup_success": "Account Created!",
+    "forgot_password_link": "Forgot Password?",
+    "forgot_password_title": "Forgot Password",
+    "forgot_password_subtitle": "Enter your email address and we will send you a code to reset your password.",
+    "verify_code_title": "Verify Code",
+    "verify_code_subtitle": "Enter the 6-digit code sent to your email.",
+    "set_password_title": "Set New Password",
+    "set_password_subtitle": "Create a new secure password for your account.",
+    "email_placeholder": "Email Address",
+    "code_placeholder": "6-Digit Code",
+    "new_password_placeholder": "New Password",
+    "confirm_password_placeholder": "Confirm Password",
+    "send_code_btn": "Send Code",
+    "reset_password_btn": "Reset Password",
+    "next_btn": "Next",
+    "resend_otp": "Resend OTP",
+    "resend_in": "Resend in {{seconds}}s",
+    "otp_expiry": "OTP is valid for 2 minutes",
+    "forgot_success_title": "Email Sent",
+    "forgot_success_msg": "A 6-digit verification code has been sent to your email.",
+    "resend_success_title": "OTP Resent",
+    "resend_success_msg": "A new 6-digit verification code has been sent to your email.",
+    "reset_success_title": "Success",
+    "reset_success_msg": "Your password has been reset successfully."
   },
   "puzzle": {
     "title_guest": "Need Hearts?",
@@ -124,5 +147,17 @@
     "daily_limit": "Daily refill limit reached for this category. Please try again tomorrow!",
     "cooldown": "Please wait {{hours}} more hours to refill hearts for this category.",
     "disabled": "Refill is currently disabled."
+  },
+  "onboarding": {
+    "welcome_guide_title": "Welcome to QuizApp!",
+    "welcome_guide_desc": "Get ready to test your knowledge and earn rewards. Let's show you around!",
+    "category_guide_title": "Pick a Topic",
+    "category_guide_desc": "Choose from various categories like Science, History, or Sports to start your quiz journey.",
+    "quiz_guide_title": "The Quiz Screen",
+    "quiz_guide_desc": "Answer questions before the timer runs out. Use lifelines if you get stuck!",
+    "lifeline_guide_title": "Use Lifelines",
+    "lifeline_guide_desc": "50/50, AI Hints, and Stop Timer can help you stay in the game!",
+    "next": "Next",
+    "finish": "Got it!"
   }
 }

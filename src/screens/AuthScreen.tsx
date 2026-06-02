@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TextInput, 
-  TouchableOpacity, 
-  ActivityIndicator, 
-  KeyboardAvoidingView, 
-  Platform, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
   ScrollView,
   Alert
 } from 'react-native';
@@ -49,7 +49,7 @@ const AuthScreen = () => {
     setLoading(true);
     try {
       const endpoint = isLogin ? '/users/login' : '/users/register';
-      const payload = isLogin 
+      const payload = isLogin
         ? { email: formData.email, password: formData.password }
         : { ...formData, guestId }; // Pass guestId to convert guest to user
 
@@ -73,7 +73,7 @@ const AuthScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={[styles.container, { backgroundColor: colors.background }]}
       >
@@ -140,17 +140,17 @@ const AuthScreen = () => {
             </View>
 
             {isLogin && (
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={{ alignSelf: 'flex-end', marginTop: -12 }}
                 onPress={() => navigation.navigate('ForgotPassword' as any)}
               >
                 <Text style={{ color: colors.primary, fontWeight: '600', fontSize: 14 }}>
-                  Forgot Password?
+                  {t('auth.forgot_password_link')}
                 </Text>
               </TouchableOpacity>
             )}
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={[styles.button, { backgroundColor: colors.primary }]}
               onPress={handleAuth}
               disabled={loading}
@@ -165,7 +165,7 @@ const AuthScreen = () => {
               )}
             </TouchableOpacity>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.switchButton}
               onPress={() => setIsLogin(!isLogin)}
             >
@@ -183,7 +183,7 @@ const AuthScreen = () => {
               <View style={[styles.line, { backgroundColor: colors.border + '40' }]} />
             </View>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={[styles.guestButton, { borderColor: colors.border + '40' }]}
               onPress={() => navigation.navigate('Home' as any)}
             >
@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: '800',
+
     marginBottom: 12,
     letterSpacing: -0.5,
   },

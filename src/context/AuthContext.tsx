@@ -90,7 +90,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async () => {
     await AsyncStorage.removeItem('userToken');
-    
+
     // Generate a new guest ID so we don't automatically log back in 
     // to the account if the old guest ID was converted to a user
     const newGuestId = 'guest_' + Math.random().toString(36).substring(2, 15);
